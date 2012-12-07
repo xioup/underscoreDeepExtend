@@ -10,7 +10,7 @@ Licensed under the GPL V3+.
 
 Original source: https://gist.github.com/1868955
 
-## installation:
+## Installation:
 
     npm install git://github.com/pygy/undescoreDeepExtend.git
     
