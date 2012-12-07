@@ -1,4 +1,96 @@
-undescoreDeepExtend
-===================
+# _.deepExtend 
 
-A deepExtend implementation for underscore, lodash and friends.
+A deep extend implementation for underscore, lodash and freinds.
+
+Based conceptually on the _.extend() function in underscore.js ( see http://documentcloud.github.com/underscore/#extend for more details ).
+
+Copyright (C) 2012  Kurt Milam - http://xioup.com 
+
+Licensed under the GPL V3+.
+
+Original source: https://gist.github.com/1868955
+    
+
+## Dependency: 
+
+One of 
+
+- underscore.js ( http://documentcloud.github.com/underscore/ )
+- lodash.js
+- another clone that provides _.each, _.is(Array|Object|String|Undefined).
+
+Mix it in with the parent library (it must be explicitly injected):
+
+    _.mixin({deepExtend: deepExtend(_)});
+
+Call it like this:
+
+    var myObj = _.deepExtend(grandparent, child, grandchild, greatgrandchild)
+
+## Notes:
+
+### Keep it DRY.
+
+This function is especially useful if you're working with JSON config documents. It allows you to create a default
+config document with the most common settings, then override those settings for specific cases. It accepts any
+number of objects as arguments, giving you fine-grained control over your config document hierarchy.
+
+### Special Features and Considerations:
+
+- parentRE allows you to concatenate strings. example:
+
+  ``` Javascript
+  var obj = _.deepExtend({url: "www.example.com"}, {url: "http://#{_}/path/to/file.html"});
+      
+  console.log(obj.url);
+  ```
+  
+  output: `http://www.example.com/path/to/file.html`
+
+- parentRE also acts as a placeholder, which can be useful when you need to change one value in an array, while
+  leaving the others untouched. example:
+
+  ``` Javascript
+      var arr = _.deepExtend([100,    {id: 1234}, true,  "foo",  [250, 500]],
+                             ["#{_}", "#{_}",     false, "#{_}", "#{_}"]);
+      console.log(arr);
+  ```
+
+  output: `[100, {id: 1234}, false, "foo", [250, 500]]`
+
+- The previous example can also be written like this:
+
+    var arr = _.deepExtend([100,    {id:1234},   true,  "foo",  [250, 500]],
+                          ["#{_}", {},          false, "#{_}", []]);
+    console.log(arr);
+
+  output: `[100, {id: 1234}, false, "foo", [250, 500]]`
+
+- And also like this:
+
+  ``` Javascript
+  var arr = _.deepExtend([100,    {id:1234},   true,  "foo",  [250, 500]],
+                         ["#{_}", {},          false]);
+  console.log(arr);
+  ```
+
+  output: `[100, {id: 1234}, false, "foo", [250, 500]]`
+
+- Array order is important. example:
+
+  ``` Javascript
+  var arr = _.deepExtend([1, 2, 3, 4], [1, 4, 3, 2]);
+  console.log(arr);
+  ```
+  
+  output: `[1, 4, 3, 2]`
+
+
+- You can remove an array element set in a parent object by setting the same index value to null in a child object. Example:
+
+  ``` Javascript
+  var obj = _.deepExtend({arr: [1, 2, 3, 4]}, {arr: ["#{_}", null]});
+  console.log(obj.arr);
+  ```
+  
+  output: `[1, 3, 4]`
