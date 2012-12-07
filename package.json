@@ -1,0 +1,13 @@
+{
+    "name": "undescoreDeepExtend",
+    "description": "A deepExtend implementation for underscore, lodash and friends.",
+    "keywords": ["underscode","lodash", "deep extend"],
+    "author": "Kurt Milam - http://xioup.com",
+    "license": "GPL v3",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pygy/undescoreDeepExtend.git"
+    },
+    "main": "index"
+}
