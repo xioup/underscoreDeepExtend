@@ -1,6 +1,6 @@
 # _.deepExtend 
 
-A deep extend implementation for underscore, lodash and freinds.
+A deep extend implementation for underscore, lodash and friends.
 
 Based conceptually on the _.extend() function in underscore.js ( see http://documentcloud.github.com/underscore/#extend for more details ).
 
