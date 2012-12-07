@@ -1,4 +1,4 @@
-/**
+co/**
  *   
  *   This program is free software: you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
  *   
@@ -10,11 +10,11 @@
 
 ( // Module boilerplate to support browser globals, node.js and AMD.
   (typeof module !== "undefined" && function (m) { module.exports = m(); }) ||
-  (typeof define === "function" && function (m) { define("brozula", ['underscore'], m); }) ||
-  (function (m) { window.brozula = m(); })
+  (typeof define === "function" && function (m) { define('underscoreDeepExtend', m); }) ||
+  (function (m) { window['underscoreDeepExtend'] = m(); })
 )(function () { return function(_) {
 
-return function deepExtend (obj) {
+return function undersocreDeepExtend (obj) {
   var parentRE = /#{\s*?_\s*?}/,
       slice = Array.prototype.slice,
       hasOwnProperty = Object.prototype.hasOwnProperty;
