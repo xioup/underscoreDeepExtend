@@ -26,10 +26,12 @@ One of
 - [lodash.js](http://lodash.com/)
 - another clone that provides _.each, _.is(Array|Object|String|Undefined).
 
+## Usage:
+
 Mix it in with the parent library (it must be explicitly injected):
 
     _.mixin({deepExtend: underscoreDeepExtend(_)});
-
+    
 Call it like this:
 
     var myObj = _.deepExtend(grandparent, child, grandchild, greatgrandchild)
