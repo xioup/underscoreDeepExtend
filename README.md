@@ -1,8 +1,8 @@
 # _.deepExtend 
 
-A deep extend implementation for underscore, lodash and friends.
+A deep extend implementation for [underscore](http://underscorejs.org/), [lodash](http://lodash.com/) and friends.
 
-Based conceptually on the _.extend() function in underscore.js ( see http://documentcloud.github.com/underscore/#extend for more details ).
+Based conceptually on the [_.extend()](http://underscorejs.org/#extend) function in underscore.js.
 
 Copyright (C) 2012  Kurt Milam - http://xioup.com 
 
@@ -22,8 +22,8 @@ or, in the package.json dependencies:
 
 One of 
 
-- underscore.js ( http://documentcloud.github.com/underscore/ )
-- lodash.js
+- [underscore.js](http://underscorejs.org/)
+- [lodash.js](http://lodash.com/)
 - another clone that provides _.each, _.is(Array|Object|String|Undefined).
 
 Mix it in with the parent library (it must be explicitly injected):
