@@ -28,7 +28,7 @@ One of
 
 Mix it in with the parent library (it must be explicitly injected):
 
-    _.mixin({deepExtend: deepExtend(_)});
+    _.mixin({deepExtend: underscoreDeepExtend(_)});
 
 Call it like this:
 
