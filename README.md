@@ -9,7 +9,14 @@ Copyright (C) 2012  Kurt Milam - http://xioup.com
 Licensed under the GPL V3+.
 
 Original source: https://gist.github.com/1868955
+
+## installation:
+
+    npm install git://github.com/pygy/undescoreDeepExtend.git
     
+or, in the package.json dependencies:
+
+    "underscoreDeepExtend": "git://github.com/pygy/undescoreDeepExtend.git"
 
 ## Dependency: 
 
