@@ -1,6 +1,6 @@
 # _.deepExtend 
 
-A deep extend implementation for [underscore](http://underscorejs.org/), [lodash](http://lodash.com/) and friends.
+A deep extend implementation for [underscore](http://underscorejs.org/), [lodash](http://lodash.com/) and their (AFAIK non-existent) friends.
 
 Based conceptually on the [_.extend()](http://underscorejs.org/#extend) function in underscore.js.
 
@@ -24,7 +24,7 @@ One of
 
 - [underscore.js](http://underscorejs.org/)
 - [lodash.js](http://lodash.com/)
-- another clone that provides _.each, _.is(Array|Object|String|Undefined).
+- another clone that provides _.each and _.is(Array|Object|String|Undefined).
 
 ## Usage:
 
