@@ -14,7 +14,7 @@
   (function (m) { window['underscoreDeepExtend'] = m(); })
 )(function () { return function(_) {
 
-return function undersocreDeepExtend (obj) {
+return function underscoreDeepExtend (obj) {
   var parentRE = /#{\s*?_\s*?}/,
       slice = Array.prototype.slice,
       hasOwnProperty = Object.prototype.hasOwnProperty;
