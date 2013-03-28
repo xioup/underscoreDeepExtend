@@ -28,7 +28,7 @@ One of
 
 ## Usage:
 
-Mix it in with the parent library (which must be explicitly injected):
+Load it, either as is (in the browser), as an AMD module, or as a CommonJS/Node.js module), then mix it in with the parent library (which must be explicitly injected):
 
     _.mixin({deepExtend: underscoreDeepExtend(_)});
     
