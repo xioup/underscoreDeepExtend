@@ -12,11 +12,11 @@ Original source: https://gist.github.com/1868955
 
 ## Installation:
 
-    npm install git://github.com/pygy/undescoreDeepExtend.git
+    npm install git://github.com/pygy/underscoreDeepExtend.git
     
 or, in the package.json dependencies:
 
-    "underscoreDeepExtend": "git://github.com/pygy/undescoreDeepExtend.git"
+    "underscoreDeepExtend": "git://github.com/pygy/underscoreDeepExtend.git"
 
 ## Dependency: 
 
@@ -28,7 +28,7 @@ One of
 
 ## Usage:
 
-Mix it in with the parent library (it must be explicitly injected):
+Mix it in with the parent library (which must be explicitly injected):
 
     _.mixin({deepExtend: underscoreDeepExtend(_)});
     
