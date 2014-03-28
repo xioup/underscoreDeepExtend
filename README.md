@@ -56,19 +56,20 @@ number of objects as arguments, giving you fine-grained control over your config
   leaving the others untouched. example:
 
   ``` Javascript
-      var arr = _.deepExtend([100,    {id: 1234}, true,  "foo",  [250, 500]],
-                             ["#{_}", "#{_}",     false, "#{_}", "#{_}"]);
-      console.log(arr);
+  var arr = _.deepExtend([100,    {id: 1234}, true,  "foo",  [250, 500]],
+                         ["#{_}", "#{_}",     false, "#{_}", "#{_}"]);
+  console.log(arr);
   ```
 
   output: `[100, {id: 1234}, false, "foo", [250, 500]]`
 
 - The previous example can also be written like this:
 
-    var arr = _.deepExtend([100,    {id:1234},   true,  "foo",  [250, 500]],
-                          ["#{_}", {},          false, "#{_}", []]);
-    console.log(arr);
-
+  ``` Javascript
+  var arr = _.deepExtend([100,    {id:1234},   true,  "foo",  [250, 500]],
+                        ["#{_}", {},          false, "#{_}", []]);
+  console.log(arr);
+  ```
   output: `[100, {id: 1234}, false, "foo", [250, 500]]`
 
 - And also like this:
