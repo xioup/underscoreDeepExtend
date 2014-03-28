@@ -12,11 +12,7 @@ Original source: https://gist.github.com/1868955
 
 ## Installation:
 
-    npm install git://github.com/pygy/underscoreDeepExtend.git
-    
-or, in the package.json dependencies:
-
-    "underscoreDeepExtend": "git://github.com/pygy/underscoreDeepExtend.git"
+    npm install underscore-deep-extend
 
 ## Dependency: 
 

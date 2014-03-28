@@ -17,8 +17,8 @@
     ],
     "homepage": "https://github.com/pygy/underscoreDeepExtend",
     "bugs": {"url":"https://github.com/pygy/underscoreDeepExtend/issues"},
-    "license": "GPL v3",
-    "version": "0.0.1",
+    "license": "MIT",
+    "version": "0.0.2",
     "repository": {
         "type": "git",
         "url": "https://github.com/pygy/underscoreDeepExtend.git"
