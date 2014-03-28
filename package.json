@@ -1,8 +1,22 @@
 {
-    "name": "underscoreDeepExtend",
+    "name": "underscore-deep-extend",
     "description": "A deepExtend implementation for underscore, lodash and friends.",
-    "keywords": ["underscore","lodash", "deep extend"],
-    "author": "Kurt Milam - http://xioup.com",
+    "keywords": ["underscore", "lodash", "deep extend"],
+    "author": {
+        "name": "Kurt Milam",
+        "url": "http://xioup.com"
+    },
+    "contributors":[
+        {
+            "name":"Pierre-Yves Gérardy",
+            "url":"https://github.com/pygy"
+        },{
+            "name":"Kurt Milam",
+            "url":"https://github.com/kurtmilam"
+        }
+    ],
+    "homepage": "https://github.com/pygy/underscoreDeepExtend",
+    "bugs": {"url":"https://github.com/pygy/underscoreDeepExtend/issues"},
     "license": "GPL v3",
     "version": "0.0.1",
     "repository": {
