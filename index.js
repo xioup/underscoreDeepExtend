@@ -21,7 +21,7 @@ return function underscoreDeepExtend(obj) {
   _.each(slice.call(arguments, 1), function(source) {
     for (var prop in source) {
       if (hasOwnProperty.call(source, prop)) {
-        if (_.isUndefined(obj[prop]) || _.isFunction(obj[prop]) || _.isNull(source[prop])) {
+        if (_.isUndefined(obj[prop]) || _.isFunction(obj[prop]) || _.isNull(source[prop]) || _.isDate(source[prop])) {
           obj[prop] = source[prop];
         }
         else if (_.isString(source[prop]) && parentRE.test(source[prop])) {
