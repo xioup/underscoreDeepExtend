@@ -1,6 +1,6 @@
 {
   "name": "underscore-deep-extend",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repo": "pygy/underscoreDeepExtend",
   "description": "A deepExtend implementation for underscore, lodash and friends.",
   "keywords": ["underscore", "lodash", "deep extend"],
