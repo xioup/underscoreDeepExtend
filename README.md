@@ -20,7 +20,7 @@ One of
 
 - [underscore.js](http://underscorejs.org/)
 - [lodash.js](http://lodash.com/)
-- another clone that provides _.each and _.is(Array|Object|String|Undefined).
+- another clone that provides `_.each` and `_.is(Array|Date|Null|Object|String|Undefined)`.
 
 ## Usage:
 
