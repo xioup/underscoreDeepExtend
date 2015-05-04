@@ -31,14 +31,14 @@ return function underscoreDeepExtend(obj) {
         if (!_.isArray(obj[prop]) || !_.isArray(source[prop])){
           throw new Error('Trying to combine an array with a non-array (' + prop + ')');
         } else {
-          obj[prop] = _.reject(_.deepExtend(obj[prop], source[prop]), function (item) { return _.isNull(item);});
+          obj[prop] = _.reject(_.deepExtend(_.clone(obj[prop]), source[prop]), function (item) { return _.isNull(item);});
         }
       }
       else if (_.isObject(obj[prop]) || _.isObject(source[prop])){
         if (!_.isObject(obj[prop]) || !_.isObject(source[prop])){
           throw new Error('Trying to combine an object with a non-object (' + prop + ')');
         } else {
-          obj[prop] = _.deepExtend(obj[prop], source[prop]);
+          obj[prop] = _.deepExtend(_.clone(obj[prop]), source[prop]);
         }
       } else {
         obj[prop] = source[prop];
