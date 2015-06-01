@@ -15,13 +15,13 @@
             "url":"https://github.com/kurtmilam"
         }
     ],
-    "homepage": "https://github.com/pygy/underscoreDeepExtend",
-    "bugs": {"url":"https://github.com/pygy/underscoreDeepExtend/issues"},
+    "homepage": "https://github.com/kurtmilam/underscoreDeepExtend",
+    "bugs": {"url":"https://github.com/kurtmilam/underscoreDeepExtend/issues"},
     "license": "MIT",
     "version": "0.0.5",
     "repository": {
         "type": "git",
-        "url": "https://github.com/pygy/underscoreDeepExtend.git"
+        "url": "https://github.com/kurtmilam/underscoreDeepExtend.git"
     },
     "main": "index"
 }
