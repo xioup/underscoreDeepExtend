@@ -6,7 +6,7 @@ Based conceptually on the [_.extend()](http://underscorejs.org/#extend) function
 
 Copyright (C) 2012  Kurt Milam - http://xioup.com 
 
-Licensed under the GPL V3+.
+License: MIT
 
 Original source: https://gist.github.com/1868955
 
