@@ -1,27 +1,34 @@
 {
-    "name": "underscore-deep-extend",
-    "description": "A deepExtend implementation for underscore, lodash and friends.",
-    "keywords": ["underscore", "lodash", "deep extend"],
-    "author": {
-        "name": "Kurt Milam",
-        "url": "http://xioup.com"
+  "name": "underscore-deep-extend",
+  "description": "A deepExtend implementation for underscore, lodash and friends.",
+  "keywords": [
+    "underscore",
+    "lodash",
+    "deep extend"
+  ],
+  "author": {
+    "name": "Kurt Milam",
+    "url": "http://xioup.com"
+  },
+  "contributors": [
+    {
+      "name": "Pierre-Yves Gérardy",
+      "url": "https://github.com/pygy"
     },
-    "contributors":[
-        {
-            "name":"Pierre-Yves Gérardy",
-            "url":"https://github.com/pygy"
-        },{
-            "name":"Kurt Milam",
-            "url":"https://github.com/kurtmilam"
-        }
-    ],
-    "homepage": "https://github.com/kurtmilam/underscoreDeepExtend",
-    "bugs": {"url":"https://github.com/kurtmilam/underscoreDeepExtend/issues"},
-    "license": "MIT",
-    "version": "0.0.5",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/kurtmilam/underscoreDeepExtend.git"
-    },
-    "main": "index"
+    {
+      "name": "Kurt Milam",
+      "url": "https://github.com/kurtmilam"
+    }
+  ],
+  "homepage": "https://github.com/kurtmilam/underscoreDeepExtend",
+  "bugs": {
+    "url": "https://github.com/kurtmilam/underscoreDeepExtend/issues"
+  },
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kurtmilam/underscoreDeepExtend.git"
+  },
+  "main": "index"
 }
