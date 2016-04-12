@@ -25,10 +25,10 @@
     "url": "https://github.com/kurtmilam/underscoreDeepExtend/issues"
   },
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kurtmilam/underscoreDeepExtend.git"
+    "url": "git://github.com/kurtmilam/underscoreDeepExtend.git"
   },
   "main": "index"
 }
