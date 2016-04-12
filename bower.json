@@ -1,6 +1,6 @@
 {
   "name": "underscore-deep-extend",
-  "version": "0.0.5",
+  "version": "1.0.1",
   "main": "index.js",
   "ignore": [
     ".gitignore",
