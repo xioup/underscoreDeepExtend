@@ -7,12 +7,10 @@
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 **/
 
-( // Module boilerplate to support browser globals, node.js and AMD.
-  (typeof module !== "undefined" && function (m) { module.exports = m(); }) ||
-  (typeof define === "function" && function (m) { define('underscoreDeepExtend', m); }) ||
-  (function (m) { window['underscoreDeepExtend'] = m(); })
-)(function () { return function(_) {
+(function (global, undefined) {
+    'use strict';
 
+    var factory = function factory(_) {
 return function underscoreDeepExtend(obj) {
   var parentRE = /#{\s*?_\s*?}/,
   slice = Array.prototype.slice;
@@ -48,4 +46,22 @@ return function underscoreDeepExtend(obj) {
   return obj;
 };
 
-};});
+    };
+
+    // AMD support
+    if (typeof define === 'function' && define.amd) {
+        define(function () {
+            return factory;
+        });
+        // CommonJS/Node.js support
+    } else if (typeof exports === 'object') {
+        // Support Node.js specific `module.exports` (which can be a function)
+        if (typeof module === 'object' && typeof module.exports === 'object') {
+            exports = module.exports = factory;
+        }
+        // But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
+        exports.underscoreDeepExtend = factory;
+    } else {
+        global.underscoreDeepExtend = factory;
+    }
+})(typeof window === 'undefined' ? this : window);
