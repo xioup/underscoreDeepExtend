@@ -16,7 +16,7 @@
 return function underscoreDeepExtend(obj) {
   var parentRE = /#{\s*?_\s*?}/;
 
-  _.each(Array.prototype.slice.call(arguments, 1), function(source) {
+  var extendProperty = function(source) {
     for (var prop in source) {
       if (_.isUndefined(obj[prop]) || _.isNull(obj[prop]) ||_.isFunction(obj[prop]) || _.isNull(source[prop]) || _.isDate(source[prop])) {
         obj[prop] = source[prop];
@@ -30,7 +30,7 @@ return function underscoreDeepExtend(obj) {
         if (!_.isArray(obj[prop]) || !_.isArray(source[prop])){
           throw new Error('Trying to combine an array with a non-array (' + prop + ')');
         } else {
-          obj[prop] = _.reject(_.deepExtend(_.clone(obj[prop]), source[prop]), function (item) { return _.isNull(item);});
+          obj[prop] = _.reject(_.deepExtend(_.clone(obj[prop]), source[prop]), _.isNull);
         }
       }
       else if (_.isObject(obj[prop]) || _.isObject(source[prop])){
@@ -43,7 +43,10 @@ return function underscoreDeepExtend(obj) {
         obj[prop] = source[prop];
       }
     }
-  });
+  };
+
+  _.each(Array.prototype.slice.call(arguments, 1), extendProperty);
+  
   return obj;
 };
 
