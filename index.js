@@ -35,7 +35,11 @@ return function underscoreDeepExtend(obj) {
       }
       else if (_.isObject(obj[prop]) || _.isObject(source[prop])){
         if (!_.isObject(obj[prop]) || !_.isObject(source[prop])){
-          throw new Error('Trying to combine an object with a non-object (' + prop + ')');
+          if( _.isNull(obj[prop]) || _.isUndefined(obj[prop]) ) {
+            obj[prop] = _.deepExtend({}, source[prop]);
+          } else {
+            throw new Error('Trying to combine an object with a non-object (' + prop + ')');
+          }
         } else {
           obj[prop] = _.deepExtend(_.clone(obj[prop]), source[prop]);
         }
