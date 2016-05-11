@@ -19,7 +19,7 @@ return function underscoreDeepExtend(obj) {
   var extendProperty = function(source) {
     for (var prop in source) {
       if (_.isUndefined(obj[prop]) || _.isNull(obj[prop]) ||_.isFunction(obj[prop]) || _.isNull(source[prop]) || _.isDate(source[prop])) {
-        obj[prop] = source[prop];
+        obj[prop] = _.clone(source[prop]);
       }
       else if (_.isString(source[prop]) && parentRE.test(source[prop])) {
         if (_.isString(obj[prop])) {
