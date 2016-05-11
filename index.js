@@ -14,10 +14,9 @@
 )(function () { return function(_) {
 
 return function underscoreDeepExtend(obj) {
-  var parentRE = /#{\s*?_\s*?}/,
-  slice = Array.prototype.slice;
+  var parentRE = /#{\s*?_\s*?}/;
 
-  _.each(slice.call(arguments, 1), function(source) {
+  _.each(Array.prototype.slice.call(arguments, 1), function(source) {
     for (var prop in source) {
       if (_.isUndefined(obj[prop]) || _.isNull(obj[prop]) ||_.isFunction(obj[prop]) || _.isNull(source[prop]) || _.isDate(source[prop])) {
         obj[prop] = source[prop];
