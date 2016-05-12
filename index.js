@@ -22,6 +22,7 @@ return function underscoreDeepExtend(obj) {
       },
   
       procAssign = function (oProp, sProp, propName) {
+        // Perform a straight assignment
         return sProp;
       },
   
@@ -30,6 +31,7 @@ return function underscoreDeepExtend(obj) {
       },
   
       procRegex = function (oProp, sProp, propName) {
+        // Perform a string.replace using parentRE if oProp is a string
         if (!_.isString(oProp)) {
           return oProp;
           //throw new Error('Trying to combine a string with a non-string (' + propName + ')');
@@ -43,6 +45,7 @@ return function underscoreDeepExtend(obj) {
       },
   
       procArray = function (oProp, sProp, propName) {
+        // extend oProp if both properties are arrays
         if (!_.isArray(oProp) || !_.isArray(sProp)){
           throw new Error('Trying to combine an array with a non-array (' + propName + ')');
         } else {
@@ -55,6 +58,7 @@ return function underscoreDeepExtend(obj) {
       },
   
       procObject = function (oProp, sProp, propName) {
+        // extend oProp if both properties are objects
         if (!_.isObject(oProp) || !_.isObject(sProp)){
           throw new Error('Trying to combine an object with a non-object (' + propName + ')');
         } else {
@@ -70,22 +74,18 @@ return function underscoreDeepExtend(obj) {
         
         // Cases in which we want to perform a straight assignment
         if ( isAssign(oProp, sProp) ) {
-          // Perform the straight assignment
           obj[propName] = procAssign(oProp, sProp, propName);
         }
         // sProp is a string that contains parentRE
         else if ( hasRegex(oProp, sProp) ) {
-          // Try to perform a string.replace using parentRE
           obj[propName] = procRegex(oProp, sProp, propName);
         }
         // At least one property is an array
         else if ( hasArray(oProp, sProp) ){
-          // deepExtend oProp (if both properties are arrays)
           obj[propName] = procArray(oProp, sProp, propName);
         }
         // At least one property is an object
         else if ( hasObject(oProp, sProp) ){
-          // deepExtend oProp (if both properties are objects)
           obj[propName] = procObject(oProp, sProp, propName);
         }
         // Everything else (I don't think we ever reach this else)
