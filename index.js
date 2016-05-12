@@ -66,18 +66,31 @@ return function underscoreDeepExtend(obj) {
         var oProp = _.clone(obj[propName]),
             sProp = _.clone(source[propName]);
           
+        // The order of the 'if' statements is critical
+        
+        // Cases in which we want to perform a straight assignment
         if ( isAssign(oProp, sProp) ) {
+          // Perform the straight assignment
           obj[propName] = procAssign(oProp, sProp, propName);
         }
+        // sProp is a string that contains parentRE
         else if ( hasRegex(oProp, sProp) ) {
+          // Try to perform a string.replace using parentRE
           obj[propName] = procRegex(oProp, sProp, propName);
         }
+        // At least one property is an array
         else if ( hasArray(oProp, sProp) ){
+          // deepExtend oProp (if both properties are arrays)
           obj[propName] = procArray(oProp, sProp, propName);
         }
+        // At least one property is an object
         else if ( hasObject(oProp, sProp) ){
+          // deepExtend oProp (if both properties are objects)
           obj[propName] = procObject(oProp, sProp, propName);
-        } else {
+        }
+        // Everything else (I don't think we ever reach this else)
+        else {
+          // Let's be optimistic and perform a straight assignment
           obj[propName] = procAssign(oProp, sProp, propName);
         }
       },
