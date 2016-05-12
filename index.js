@@ -18,7 +18,7 @@ return function underscoreDeepExtend(obj) {
       source,
   
       isAssign = function (oProp, sProp) {
-        return (_.isUndefined(oProp) || _.isNull(oProp) ||_.isFunction(oProp) || _.isNull(sProp) || _.isDate(sProp));
+        return (_.isUndefined(oProp) || _.isNull(oProp) || _.isFunction(oProp) || _.isNull(sProp) || _.isDate(sProp));
       },
   
       procAssign = function (oProp, sProp, propName) {
@@ -67,7 +67,7 @@ return function underscoreDeepExtend(obj) {
       },
 
       procMain = function(propName) {
-        var oProp = _.clone(obj[propName]),
+        var oProp = obj[propName],
             sProp = _.clone(source[propName]);
           
         // The order of the 'if' statements is critical
@@ -82,11 +82,11 @@ return function underscoreDeepExtend(obj) {
         }
         // At least one property is an array
         else if ( hasArray(oProp, sProp) ){
-          obj[propName] = procArray(oProp, sProp, propName);
+          obj[propName] = procArray(_.clone(oProp), sProp, propName);
         }
         // At least one property is an object
         else if ( hasObject(oProp, sProp) ){
-          obj[propName] = procObject(oProp, sProp, propName);
+          obj[propName] = procObject(_.clone(oProp), sProp, propName);
         }
         // Everything else (I don't think we ever reach this else)
         else {
