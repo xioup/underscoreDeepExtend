@@ -23,7 +23,7 @@ return function underscoreDeepExtend(obj) {
   
       procAssign = function (oProp, sProp, propName) {
         // Perform a straight assignment
-        return sProp;
+        return _.clone(sProp);
       },
   
       hasRegex = function (oProp, sProp) {
@@ -49,7 +49,7 @@ return function underscoreDeepExtend(obj) {
         if (!_.isArray(oProp) || !_.isArray(sProp)){
           throw new Error('Trying to combine an array with a non-array (' + propName + ')');
         } else {
-          return _.reject(_.deepExtend(oProp, sProp), _.isNull);
+          return _.reject(_.deepExtend(_.clone(oProp), sProp), _.isNull);
         }
       },
   
@@ -62,13 +62,13 @@ return function underscoreDeepExtend(obj) {
         if (!_.isObject(oProp) || !_.isObject(sProp)){
           throw new Error('Trying to combine an object with a non-object (' + propName + ')');
         } else {
-          return _.deepExtend(oProp, sProp);
+          return _.deepExtend(_.clone(oProp), sProp);
         }
       },
 
       procMain = function(propName) {
         var oProp = obj[propName],
-            sProp = _.clone(source[propName]);
+            sProp = source[propName];
           
         // The order of the 'if' statements is critical
         
@@ -82,11 +82,11 @@ return function underscoreDeepExtend(obj) {
         }
         // At least one property is an array
         else if ( hasArray(oProp, sProp) ){
-          obj[propName] = procArray(_.clone(oProp), sProp, propName);
+          obj[propName] = procArray(oProp, sProp, propName);
         }
         // At least one property is an object
         else if ( hasObject(oProp, sProp) ){
-          obj[propName] = procObject(_.clone(oProp), sProp, propName);
+          obj[propName] = procObject(oProp, sProp, propName);
         }
         // Everything else (I don't think we ever reach this else)
         else {
