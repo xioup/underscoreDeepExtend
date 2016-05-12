@@ -14,40 +14,83 @@
 )(function () { return function(_) {
 
 return function underscoreDeepExtend(obj) {
-  var parentRE = /#{\s*?_\s*?}/;
-
-  var extendProperty = function(source) {
-    for (var prop in source) {
-      if (_.isUndefined(obj[prop]) || _.isNull(obj[prop]) ||_.isFunction(obj[prop]) || _.isNull(source[prop]) || _.isDate(source[prop])) {
-        obj[prop] = _.clone(source[prop]);
-      }
-      else if (_.isString(source[prop]) && parentRE.test(source[prop])) {
-        if (_.isString(obj[prop])) {
-          obj[prop] = source[prop].replace(parentRE, obj[prop]);
-        }
-      }
-      else if (_.isArray(obj[prop]) || _.isArray(source[prop])){
-        if (!_.isArray(obj[prop]) || !_.isArray(source[prop])){
-          throw new Error('Trying to combine an array with a non-array (' + prop + ')');
+  var parentRE = /#{\s*?_\s*?}/,
+      source,
+  
+      isAssign = function (oProp, sProp) {
+        return (_.isUndefined(oProp) || _.isNull(oProp) ||_.isFunction(oProp) || _.isNull(sProp) || _.isDate(sProp));
+      },
+  
+      procAssign = function (oProp, sProp, propName) {
+        return sProp;
+      },
+  
+      hasRegex = function (oProp, sProp) {
+        return ( _.isString(sProp) && parentRE.test(sProp) );
+      },
+  
+      procRegex = function (oProp, sProp, propName) {
+        if (!_.isString(oProp)) {
+          return oProp;
+          //throw new Error('Trying to combine a string with a non-string (' + propName + ')');
         } else {
-          obj[prop] = _.reject(_.deepExtend(_.clone(obj[prop]), source[prop]), _.isNull);
+          return sProp.replace(parentRE, oProp);
         }
-      }
-      else if (_.isObject(obj[prop]) || _.isObject(source[prop])){
-        if (!_.isObject(obj[prop]) || !_.isObject(source[prop])){
-          throw new Error('Trying to combine an object with a non-object (' + prop + ')');
+      },
+  
+      hasArray = function (oProp, sProp) {
+        return (_.isArray(oProp) || _.isArray(sProp));
+      },
+  
+      procArray = function (oProp, sProp, propName) {
+        if (!_.isArray(oProp) || !_.isArray(sProp)){
+          throw new Error('Trying to combine an array with a non-array (' + propName + ')');
         } else {
-          obj[prop] = _.deepExtend(_.clone(obj[prop]), source[prop]);
+          return _.reject(_.deepExtend(oProp, sProp), _.isNull);
         }
-      } else {
-        obj[prop] = source[prop];
-      }
-    }
-  };
+      },
+  
+      hasObject = function (oProp, sProp) {
+        return (_.isObject(oProp) || _.isObject(sProp));
+      },
+  
+      procObject = function (oProp, sProp, propName) {
+        if (!_.isObject(oProp) || !_.isObject(sProp)){
+          throw new Error('Trying to combine an object with a non-object (' + propName + ')');
+        } else {
+          return _.deepExtend(oProp, sProp);
+        }
+      },
 
-  _.each(Array.prototype.slice.call(arguments, 1), extendProperty);
+      procMain = function(propName) {
+        var oProp = _.clone(obj[propName]),
+            sProp = _.clone(source[propName]);
+          
+        if ( isAssign(oProp, sProp) ) {
+          obj[propName] = procAssign(oProp, sProp, propName);
+        }
+        else if ( hasRegex(oProp, sProp) ) {
+          obj[propName] = procRegex(oProp, sProp, propName);
+        }
+        else if ( hasArray(oProp, sProp) ){
+          obj[propName] = procArray(oProp, sProp, propName);
+        }
+        else if ( hasObject(oProp, sProp) ){
+          obj[propName] = procObject(oProp, sProp, propName);
+        } else {
+          obj[propName] = procAssign(oProp, sProp, propName);
+        }
+      },
+  
+      extendObject = function(src) {
+        source = src;
+        Object.keys(source).forEach(procMain);
+      };
+
+  _.each(Array.prototype.slice.call(arguments, 1), extendObject);
   
   return obj;
 };
 
-};});
+};
+});
