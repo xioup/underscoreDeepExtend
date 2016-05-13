@@ -93,7 +93,7 @@ return function underscoreDeepExtend(obj) {
         // Everything else
         else {
           // Let's be optimistic and perform a straight assignment
-          obj[propName] = procAssign(oProp, sProp, propName);
+          procAssign(oProp, sProp, propName);
         }
       },
   
