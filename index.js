@@ -97,12 +97,12 @@ return function underscoreDeepExtend(obj) {
         }
       },
   
-      extendObject = function(src) {
+      procAll = function(src) {
         source = src;
         Object.keys(source).forEach(procMain);
       };
 
-  _.each(Array.prototype.slice.call(arguments, 1), extendObject);
+  _.each(Array.prototype.slice.call(arguments, 1), procAll);
   
   return obj;
 };
