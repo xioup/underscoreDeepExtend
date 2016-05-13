@@ -90,7 +90,7 @@ return function underscoreDeepExtend(obj) {
         else if ( hasObject(oProp, sProp) ){
           procObject(oProp, sProp, propName);
         }
-        // Everything else (I don't think we ever reach this else)
+        // Everything else
         else {
           // Let's be optimistic and perform a straight assignment
           obj[propName] = procAssign(oProp, sProp, propName);
