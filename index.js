@@ -23,7 +23,8 @@ return function underscoreDeepExtend(obj) {
   
       procAssign = function (oProp, sProp, propName) {
         // Perform a straight assignment
-        return _.clone(sProp);
+        // Assign for object properties & return for array members
+        return obj[propName] = _.clone(sProp);
       },
   
       hasRegex = function (oProp, sProp) {
@@ -33,11 +34,11 @@ return function underscoreDeepExtend(obj) {
       procRegex = function (oProp, sProp, propName) {
         // Perform a string.replace using parentRE if oProp is a string
         if (!_.isString(oProp)) {
-          return oProp;
-          //throw new Error('Trying to combine a string with a non-string (' + propName + ')');
-        } else {
-          return sProp.replace(parentRE, oProp);
+          // We're being optimistic at the moment
+          // throw new Error('Trying to combine a string with a non-string (' + propName + ')');
         }
+        // Assign for object properties & return for array members
+        return obj[propName] = sProp.replace(parentRE, oProp);
       },
   
       hasArray = function (oProp, sProp) {
@@ -48,9 +49,10 @@ return function underscoreDeepExtend(obj) {
         // extend oProp if both properties are arrays
         if (!_.isArray(oProp) || !_.isArray(sProp)){
           throw new Error('Trying to combine an array with a non-array (' + propName + ')');
-        } else {
-          return _.reject(_.deepExtend(_.clone(oProp), sProp), _.isNull);
         }
+        var tmp = _.deepExtend(obj[propName], sProp);
+        // Assign for object properties & return for array members
+        return obj[propName] = _.reject(tmp, _.isNull);
       },
   
       hasObject = function (oProp, sProp) {
@@ -61,9 +63,9 @@ return function underscoreDeepExtend(obj) {
         // extend oProp if both properties are objects
         if (!_.isObject(oProp) || !_.isObject(sProp)){
           throw new Error('Trying to combine an object with a non-object (' + propName + ')');
-        } else {
-          return _.deepExtend(_.clone(oProp), sProp);
         }
+        // Assign for object properties & return for array members
+        return obj[propName] = _.deepExtend(oProp, sProp);
       },
 
       procMain = function(propName) {
@@ -74,19 +76,19 @@ return function underscoreDeepExtend(obj) {
         
         // Cases in which we want to perform a straight assignment
         if ( isAssign(oProp, sProp) ) {
-          obj[propName] = procAssign(oProp, sProp, propName);
+          procAssign(oProp, sProp, propName);
         }
         // sProp is a string that contains parentRE
         else if ( hasRegex(oProp, sProp) ) {
-          obj[propName] = procRegex(oProp, sProp, propName);
+          procRegex(oProp, sProp, propName);
         }
         // At least one property is an array
         else if ( hasArray(oProp, sProp) ){
-          obj[propName] = procArray(oProp, sProp, propName);
+          procArray(oProp, sProp, propName);
         }
         // At least one property is an object
         else if ( hasObject(oProp, sProp) ){
-          obj[propName] = procObject(oProp, sProp, propName);
+          procObject(oProp, sProp, propName);
         }
         // Everything else (I don't think we ever reach this else)
         else {
