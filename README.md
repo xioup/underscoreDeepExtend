@@ -20,7 +20,7 @@ One of
 
 - [underscore.js](http://underscorejs.org/)
 - [lodash.js](http://lodash.com/)
-- another clone that provides `_.each` and `_.is(Array|Date|Null|Object|String|Undefined)`.
+- another clone that provides `_.each`, `_.is(Array|Date|Null|Object|String|Undefined)`, `_.clone` and `_.reject`.
 
 ## Usage:
 
@@ -31,6 +31,10 @@ Load it, either as is (in the browser), as an AMD module, or as a CommonJS/Node.
 Call it like this:
 
     var myObj = _.deepExtend(grandparent, child, grandchild, greatgrandchild)
+
+Or this: 
+
+    _.deepExtend(myObj, child, grandchild, greatgrandchild)
 
 ## Notes:
 
