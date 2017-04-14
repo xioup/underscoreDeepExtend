@@ -71,8 +71,8 @@ number of objects as arguments, giving you fine-grained control over your config
 - The previous example can also be written like this:
 
   ``` Javascript
-  const arr = _.deepExtend( [ 100,    { id:1234 }, true,  "foo",  [ 250, 500 ] ]
-                          , [ "#{_}", {},          false, "#{_}", [ ] ]
+  const arr = _.deepExtend( [ 100,    { id: 1234 }, true,  "foo",  [ 250, 500 ] ]
+                          , [ "#{_}", {},           false, "#{_}", [ ] ]
                           )
   console.log( arr )
   ```
@@ -81,8 +81,8 @@ number of objects as arguments, giving you fine-grained control over your config
 - And also like this:
 
   ``` Javascript
-  const arr = _.deepExtend( [ 100,    { id:1234 }, true, "foo", [ 250, 500 ] ]
-                          , [ "#{_}", {},          false ]
+  const arr = _.deepExtend( [ 100,    { id: 1234 }, true, "foo", [ 250, 500 ] ]
+                          , [ "#{_}", {},           false ]
                           )
   console.log( arr )
   ```
