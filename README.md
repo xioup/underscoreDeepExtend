@@ -26,15 +26,15 @@ One of
 
 Load it, either as is (in the browser), as an AMD module, or as a CommonJS/Node.js module), then mix it in with the parent library (which must be explicitly injected):
 
-    _.mixin({deepExtend: underscoreDeepExtend(_)});
+    _.mixin( { deepExtend: underscoreDeepExtend( _ ) } )
     
 Call it like this:
 
-    var myObj = _.deepExtend(grandparent, child, grandchild, greatgrandchild)
+    const myObj = _.deepExtend( grandparent, child, grandchild, greatgrandchild )
 
 Or this: 
 
-    _.deepExtend(myObj, child, grandchild, greatgrandchild)
+    _.deepExtend( myObj, child, grandchild, greatgrandchild )
 
 ## Notes:
 
@@ -49,58 +49,64 @@ number of objects as arguments, giving you fine-grained control over your config
 - parentRE allows you to concatenate strings. example:
 
   ``` Javascript
-  var obj = _.deepExtend({url: "www.example.com"}, {url: "http://#{_}/path/to/file.html"});
-      
-  console.log(obj.url);
-  ```
+  const obj = _.deepExtend( { url: "www.example.com" }
+                          , { url: "http://#{_}/path/to/file.html" } 
+                          )
   
+  console.log( obj.url )
+  ```
   output: `http://www.example.com/path/to/file.html`
 
 - parentRE also acts as a placeholder, which can be useful when you need to change one value in an array, while
   leaving the others untouched. example:
 
   ``` Javascript
-  var arr = _.deepExtend([100,    {id: 1234}, true,  "foo",  [250, 500]],
-                         ["#{_}", "#{_}",     false, "#{_}", "#{_}"]);
-  console.log(arr);
+  const arr = _.deepExtend( [ 100,    { id: 1234 }, true,  "foo",  [ 250, 500] ]
+                          , [ "#{_}", "#{_}",       false, "#{_}", "#{_}" ]
+                          )
+  console.log( arr )
   ```
-
-  output: `[100, {id: 1234}, false, "foo", [250, 500]]`
+  output: `[ 100, { id: 1234 }, false, "foo", [ 250, 500 ] ]`
 
 - The previous example can also be written like this:
 
   ``` Javascript
-  var arr = _.deepExtend([100,    {id:1234},   true,  "foo",  [250, 500]],
-                        ["#{_}", {},          false, "#{_}", []]);
-  console.log(arr);
+  const arr = _.deepExtend( [ 100,    { id:1234 }, true,  "foo",  [ 250, 500 ] ]
+                          , [ "#{_}", {},          false, "#{_}", [ ] ]
+                          )
+  console.log( arr )
   ```
-  output: `[100, {id: 1234}, false, "foo", [250, 500]]`
+  output: `[ 100, { id: 1234 }, false, "foo", [ 250, 500 ] ]`
 
 - And also like this:
 
   ``` Javascript
-  var arr = _.deepExtend([100,    {id:1234},   true,  "foo",  [250, 500]],
-                         ["#{_}", {},          false]);
-  console.log(arr);
+  const arr = _.deepExtend( [ 100,    { id:1234 }, true, "foo", [ 250, 500 ] ]
+                          , [ "#{_}", {},          false ]
+                          )
+  console.log( arr )
   ```
-
-  output: `[100, {id: 1234}, false, "foo", [250, 500]]`
+  output: `[ 100, { id: 1234 }, false, "foo", [ 250, 500 ] ]`
 
 - Array order is important. example:
 
   ``` Javascript
-  var arr = _.deepExtend([1, 2, 3, 4], [1, 4, 3, 2]);
-  console.log(arr);
+  const arr = _.deepExtend( [ 1, 2, 3, 4 ]
+                          , [ 1, 4, 3, 2 ]
+                          )
+
+  console.log( arr )
   ```
-  
-  output: `[1, 4, 3, 2]`
+  output: `[ 1, 4, 3, 2 ]`
 
 
 - You can remove an array element set in a parent object by setting the same index value to null in a child object. Example:
 
   ``` Javascript
-  var obj = _.deepExtend({arr: [1, 2, 3, 4]}, {arr: ["#{_}", null]});
-  console.log(obj.arr);
-  ```
+  const obj = _.deepExtend( { arr: [ 1,      2,   3, 4 ] }
+                          , { arr: [ "#{_}", null ] }
+                          )
   
-  output: `[1, 3, 4]`
+  console.log( obj.arr )
+  ```
+  output: `[ 1, 3, 4 ]`
