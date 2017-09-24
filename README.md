@@ -112,7 +112,7 @@ number of objects as arguments, giving you fine-grained control over your config
   
   ## License
 
-Copyright (C) 2012  Kurt Milam - http://xioup.com 
+Copyright (C) 2012-2017 Kurt Milam - http://xioup.com 
 
 License: MIT
 
