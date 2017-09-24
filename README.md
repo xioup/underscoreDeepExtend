@@ -1,14 +1,13 @@
-# _.deepExtend 
+# <a id="deepExtend"></a> _.deepExtend &middot; [![Gitter](https://img.shields.io/gitter/room/xioup/chat.js.svg)](https://gitter.im/xioup/chat) [![GitHub stars](https://img.shields.io/github/stars/xioup/underscoredeepextend.svg?style=social)](https://github.com/xioup/underscoredeepextend) [![npm](https://img.shields.io/npm/dt/underscore-deep-extend.svg)](https://www.npmjs.com/package/underscore-deep-extend)
 
-A deep extend implementation for [underscore](http://underscorejs.org/), [lodash](http://lodash.com/) and their (AFAIK non-existent) friends.
+A deep extend implementation with added sugar for [underscore](http://underscorejs.org/), [lodash](http://lodash.com/) and friends.
 
 Based conceptually on the [_.extend()](http://underscorejs.org/#extend) function in underscore.js.
 
-Copyright (C) 2012  Kurt Milam - http://xioup.com 
-
-License: MIT
-
-Original source: https://gist.github.com/1868955
+[![npm version](https://badge.fury.io/js/underscore-deep-extend.svg)](http://badge.fury.io/js/underscore-deep-extend)
+[![Bower version](https://badge.fury.io/bo/underscore-deep-extend.svg)](https://badge.fury.io/bo/underscore-deep-extend)
+[![](https://david-dm.org/xioup/underscoredeepextend.svg)](https://david-dm.org/xioup/underscoredeepextend)
+[![](https://david-dm.org/xioup/underscoredeepextend/dev-status.svg)](https://david-dm.org/xioup/underscoredeepextend?type=dev)
 
 ## Installation:
 
@@ -36,7 +35,7 @@ Or this:
 
     _.deepExtend( myObj, child, grandchild, greatgrandchild )
 
-## Notes:
+## Notes
 
 ### Keep it DRY.
 
@@ -110,3 +109,11 @@ number of objects as arguments, giving you fine-grained control over your config
   console.log( obj.arr )
   ```
   output: `[ 1, 3, 4 ]`
+  
+  ## License
+
+Copyright (C) 2012  Kurt Milam - http://xioup.com 
+
+License: MIT
+
+Original source: https://gist.github.com/1868955
