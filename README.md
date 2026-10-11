@@ -110,7 +110,7 @@ number of objects as arguments, giving you fine-grained control over your config
   ```
   output: `[ 1, 3, 4 ]`
   
-  ## License
+## License
 
 Copyright (C) 2012-2017 Kurt Milam - http://xioup.com 
 
